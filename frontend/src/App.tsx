@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { animate, motion, useMotionTemplate, useMotionValue } from "framer-motion"
+import { useEffect } from "react"
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const COLORS = ["#13ffaa", '#1e67c6', "#ce8acf", "#dd335c"]
+  const color = useMotionValue(COLORS[0])
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`
+
+  useEffect(() => {
+    animate(color, COLORS, {
+      ease: "easeInOut",
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "mirror"
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <motion.main
+      style={{ backgroundImage }}
+      className="w-full min-h-screen text-white">
+      <div className="flex items-center justify-center py-[5vmin]">
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </motion.main>
   )
 }
-
-export default App
