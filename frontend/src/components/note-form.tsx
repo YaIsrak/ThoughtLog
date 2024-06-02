@@ -34,7 +34,7 @@ export default function NoteForm() {
 
         <Dialog>
             <DialogTrigger asChild>
-                <Button>
+                <Button className="rounded-xl">
                     New note
                     <Pencil className="w-3 h-3 ml-2" />
                 </Button>

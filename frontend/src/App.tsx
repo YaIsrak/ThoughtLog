@@ -1,6 +1,7 @@
 import { animate, motion, useMotionTemplate, useMotionValue } from "framer-motion"
 import { useEffect } from "react"
 import NoteForm from "./components/note-form"
+import SearchNotes from "./components/search-notes"
 
 export default function App() {
   const COLORS = ["#13ffaa", '#1e67c6', "#ce8acf", "#dd335c"]
@@ -23,7 +24,17 @@ export default function App() {
       style={{ backgroundImage }}
       className="w-full min-h-screen text-white">
       <div className="flex items-center justify-center py-[5vmin]">
-        <NoteForm />
+
+        {/* Header */}
+        <div className="flex gap-2 items-center">
+          <SearchNotes />
+          <NoteForm />
+        </div>
+
+        {/* Notes */}
+        <div>
+
+        </div>
       </div>
     </motion.main>
   )
