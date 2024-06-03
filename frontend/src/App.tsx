@@ -2,6 +2,8 @@ import { animate, motion, useMotionTemplate, useMotionValue } from "framer-motio
 import { useEffect } from "react"
 import NoteForm from "./components/note-form"
 import SearchNotes from "./components/search-notes"
+import NotesGrid from "./components/note-grid"
+import TodoGrid from "./components/todo-grid"
 
 export default function App() {
   const COLORS = ["#13ffaa", '#1e67c6', "#ce8acf", "#dd335c"]
@@ -23,7 +25,7 @@ export default function App() {
     <motion.main
       style={{ backgroundImage }}
       className="w-full min-h-screen text-white">
-      <div className="flex items-center justify-center py-[5vmin]">
+      <div className="flex flex-col items-center justify-center py-[5vmin]">
 
         {/* Header */}
         <div className="flex gap-2 items-center">
@@ -31,11 +33,13 @@ export default function App() {
           <NoteForm />
         </div>
 
-        {/* Notes */}
-        <div>
-
+        {/* Main content */}
+        <div className="max-w-screen-xl grid grid-cols-3 py-5 px-4 md:px-12 lg:px-24 gap-4">
+          <NotesGrid />
+          <TodoGrid />
         </div>
       </div>
     </motion.main>
   )
 }
+

@@ -82,4 +82,13 @@
 	.text-destructive {
 		@apply !text-rose-500;
 	}
+	.prose,
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose h5,
+	.prose p .prose a {
+		@apply text-white z-[1000];
+	}
 }

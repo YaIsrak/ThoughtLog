@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { Input } from "./ui/input";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "./ui/command";
+import { Button } from "./ui/button";
+import { Search } from "lucide-react";
 
 export default function SearchNotes() {
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
     return (
-        <div>
-            <Input
+        <div className=" shrink">
+            <Button
+                variant={"outline"}
                 onClick={() => setOpen(true)}
-                placeholder="Search notes..."
-                className="border-foreground/40 hover:border-foreground/70 transition rounded-xl" />
-
+                className="border-foreground/40 hover:border-foreground/70 transition rounded-xl w-80 text-muted-foreground"
+            >
+                <Search className="w-4 h-4 mr-2" />
+                Search notes...
+            </Button>
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type to search..." />
                 <CommandList>
